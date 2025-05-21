@@ -1,0 +1,173 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #3b6fdc;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.page {
+  display: none;
+  padding: 40px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.page.active {
+  display: block;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+}
+
+.form-section {
+  margin: 15px 0;
+  background: #5e8fe7;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  background: #3b3b3b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 8px 4px;
+  display: inline-block;
+  min-width: 100px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.button-group {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.team-display {
+  margin-top: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 15px;
+}
+
+/* Field image and overlay container */
+.position-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.fieldImage,
+#fieldImg {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Alliance button containers */
+#redButtons,
+#blueButtons {
+  position: absolute;
+  top: 10%;
+  height: 80%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: auto;
+  border-radius: 8px;
+}
+
+#redButtons {
+  left: 5%;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+#blueButtons {
+  right: 5%;
+  background: rgba(0, 0, 255, 0.1);
+}
+
+#redButtons button {
+  background-color: #ff5555;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#redButtons button:hover {
+  background-color: #cc4444;
+}
+
+#blueButtons button {
+  background-color: #5555ff;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#blueButtons button:hover {
+  background-color: #4444cc;
+}
+
+/* Toggle visibility based on alliance */
+#page2.red-alliance #redButtons {
+  display: flex;
+}
+
+#page2.red-alliance #blueButtons {
+  display: none;
+}
+
+#page2.blue-alliance #blueButtons {
+  display: flex;
+}
+
+#page2.blue-alliance #redButtons {
+  display: none;
+}

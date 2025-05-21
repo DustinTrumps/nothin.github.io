@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AEMScout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="key.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- PAGE 1 -->
+  <div id="page1" class="page active">
+    <h1>AEMScout</h1>
+    <img class="logo" src="aembot_icon_vector.svg" alt="EAMBOT head" />
+    <div class="form-section">
+      <label for="eventKey">EVENT</label>
+      <select id="eventKey" required>
+        <option value="2025orsal">OSF</option>
+        <option value="2025wasno">Glacier Peak</option>
+        <option value="2025orore">Clackamas</option>
+        <option value="2025wasam">Sammamish</option>
+        <option value="2025wayak">SunDome</option>
+        <option value="2025wabon">Bonney Lake</option>
+        <option value="2025orwil">Wilsonville</option>
+        <option value="2025waahs">Auburn</option>
+        <option value="2025pncmp" selected>DCMP</option>
+      </select>
+    </div>
+    <div class="form-section">
+      <label for="roleSelect">ROLE</label>
+      <select id="roleSelect" required>
+        <option value="">Select</option>
+        <option value="red1">Red 1</option>
+        <option value="red2">Red 2</option>
+        <option value="red3">Red 3</option>
+        <option value="blue1">Blue 1</option>
+        <option value="blue2">Blue 2</option>
+        <option value="blue3">Blue 3</option>
+      </select>
+    </div>
+    <div class="form-section">
+      <label for="scoutName">SCOUTER INITIALS</label>
+      <input type="text" id="scoutName" required />
+    </div>
+    <div class="form-section">
+      <label for="matchNumber">MATCH</label>
+      <input type="number" id="matchNumber" min="1" value="1" />
+    </div>
+    <p id="assignedTeamDisplay" class="team-display"></p>
+    <button id="getRobotBtn">GET ROBOT</button>
+    <div class="button-group">
+      <button id="nextBtnPage1">Next</button>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+<div id="page2" class="page">
+  <div class="position-container">
+    <img id="fieldImg" class="fieldImage" src="redField.png" alt="Field Image">
+    <div id="redButtons">
+      <button>pos 1</button>
+      <button>pos 2</button>
+      <button>pos 3</button>
+      <button>pos 4</button>
+      <button>pos 5</button>
+    </div>
+    <div id="blueButtons">
+      <button>pos 1</button>
+      <button>pos 2</button>
+      <button>pos 3</button>
+      <button>pos 4</button>
+      <button>pos 5</button>
+    </div>
+  </div>
+    <div class="button-group">
+      <button onclick="showPage(1)">Back</button>
+      <button onclick="validatePage(2, 3)">Next</button>
+    </div>
+</div>
+
+
+  
+  <!-- PAGE 3: Auto Phase -->
+  <div id="page3" class="page">
+    <h2>Auto start location </h2>
+      
+    <!-- TODO: Add Auto Fields -->
+
+    <div class="button-group">
+      <button onclick="showPage(2)">Back</button>
+      <button onclick="validatePage(3, 4)">Next</button>
+    </div>
+  </div>
+  
+  <!-- PAGE 4: Teleop Phase -->
+  <div id="page4" class="page">
+    <h2>Teleop Phase</h2>
+    <!-- TODO: Add Teleop Fields -->
+
+    <div class="button-group">
+      <button onclick="showPage(3)">Back</button>
+      <button onclick="validatePage(4, 5)">Next</button>
+    </div>
+  </div>
+
+  <!-- PAGE 5: Defense -->
+  <div id="page5" class="page">
+    <h2>Fail Points</h2>
+    <form id="form5">
+      <div class="question">
+        <label for="climbStatus">CLIMB</label>
+        <select id="climbStatus" required>
+          <option value="no attempt">No Attempt</option>
+          <option value="fail">Fail</option>
+          <option value="shallow">Shallow</option>
+          <option value="deep">Deep</option>
+        </select>
+      </div>
+
+      <div class="question CFL">
+        <label class="topLabel">COMMON FAILS LIST</label>
+        <fieldset class="fail-list">
+          <div class="fail-item"><input type="checkbox" id="fail-stopped"><label for="fail-stopped">Stopped (and Restarted)</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-died"><label for="fail-died">Died</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-tipped"><label for="fail-tipped">Tipped</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-red-card"><label for="fail-red-card">Red Card</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-yellow-card"><label for="fail-yellow-card">Yellow Card</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-broke"><label for="fail-broke">Broke</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-auto-failure"><label for="fail-auto-failure">Auto Failure</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-stuck"><label for="fail-stuck">Got Stuck</label></div>
+          <div class="fail-item"><input type="checkbox" id="fail-not-fielded"><label for="fail-not-fielded">Didn't Field Robot</label></div>
+        </fieldset>
+      </div>
+
+      <div class="question">
+        <label for="climbFailReason">Why Climb Failed (if applicable)</label>
+        <select id="climbFailReason">
+          <option value="" selected disabled hidden>Select reason</option>
+          <option value="ran out of time">Ran Out Of Time</option>
+          <option value="screwed up">Screwed Up</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="otherInfo">OTHER INFO **NO COMMAS**</label>
+        <textarea id="otherInfo" rows="4" cols="30" placeholder="Enter additional notes..."></textarea>
+      </div>
+    </form>
+
+    <div class="button-group">
+      <button onclick="showPage(4)">Back</button>
+      <button onclick="validatePage(5, 6)">Next</button>
+    </div>
+  </div>
+
+  <!-- PAGE 6: Summary -->
+  <div id="page6" class="page">
+    <h2>Summary</h2>
+    <div id="summaryData"></div>
+    <div class="button-group">
+      <button onclick="showPage(5)">Back</button>
+      <button onclick="Finish()">Finish</button>
+    </div>
+  </div>
+</body>
+</html>
