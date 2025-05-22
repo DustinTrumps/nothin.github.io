@@ -12,7 +12,7 @@
   <!-- PAGE 1 -->
   <div id="page1" class="page active">
     <h1>AEMScout</h1>
-    <img class="logo" src="aembot_icon_vector.svg" alt="EAMBOT head" />
+    <img class="logo" src="aembot_icon_vector.svg" alt="AEMBOT head" />
     <div class="form-section">
       <label for="eventKey">EVENT</label>
       <select id="eventKey" required>
@@ -55,56 +55,104 @@
   </div>
 
   <!-- PAGE 2 -->
-<div id="page2" class="page">
-  <div class="position-container">
-    <img id="fieldImg" class="fieldImage" src="redField.png" alt="Field Image">
-    <div id="redButtons">
-      <button>pos 1</button>
-      <button>pos 2</button>
-      <button>pos 3</button>
-      <button>pos 4</button>
-      <button>pos 5</button>
+  <div id="page2" class="page">
+    <h2>Select Start Position</h2>
+    <div class="position-container">
+      <img id="fieldImg" class="fieldImage" src="redField.png" alt="Field Image">
+      <div id="redButtons">
+        <button>pos 1</button>
+        <button>pos 2</button>
+        <button>pos 3</button>
+        <button>pos 4</button>
+        <button>pos 5</button>
+      </div>
+      <div id="blueButtons">
+        <button>pos 1</button>
+        <button>pos 2</button>
+        <button>pos 3</button>
+        <button>pos 4</button>
+        <button>pos 5</button>
+      </div>
     </div>
-    <div id="blueButtons">
-      <button>pos 1</button>
-      <button>pos 2</button>
-      <button>pos 3</button>
-      <button>pos 4</button>
-      <button>pos 5</button>
-    </div>
-  </div>
     <div class="button-group">
       <button onclick="showPage(1)">Back</button>
       <button onclick="validatePage(2, 3)">Next</button>
     </div>
-</div>
+  </div>
 
-
-  
-  <!-- PAGE 3: Auto Phase -->
+  <!-- PAGE 3 -->
   <div id="page3" class="page">
-    <h2>Auto start location </h2>
-      
-    <!-- TODO: Add Auto Fields -->
-
+    <h2>Auto</h2>
     <div class="button-group">
       <button onclick="showPage(2)">Back</button>
       <button onclick="validatePage(3, 4)">Next</button>
     </div>
   </div>
-  
-  <!-- PAGE 4: Teleop Phase -->
+
+  <!-- PAGE 4-->
   <div id="page4" class="page">
     <h2>Teleop Phase</h2>
-    <!-- TODO: Add Teleop Fields -->
+    <div class="teleop-grid">
+      <!-- Coral Button -->
+      <button onclick="popupFn('coral')">
+        <div class="label">coral</div>
+        <img class="coral" src="coral.png" alt="coral" />
+      </button>
+      <div class="overlay" id="coralOverlay"></div>
+      <div class="popupDialog" id="coralDialog">
+        <button onclick="closeFn('coral')">L1</button>
+        <button onclick="closeFn('coral')">L2</button>
+        <button onclick="closeFn('coral')">L3</button>
+        <button onclick="closeFn('coral')">L4</button>
+        <button onclick="closeFn('coral')">BACK</button>
+      </div>
+    
+      <!-- Algae Button -->
+      <button onclick="popupFn('algae')">
+        <div class="label">algae</div>
+        <img class="algae" src="algae.png" alt="algae" />
+      </button>
+      <div class="overlay" id="algaeOverlay"></div>
+      <div class="popupDialog" id="algaeDialog">
+        <button onclick="closeFn('algae')">brage</button>
+        <button onclick="closeFn('algae')">proseser</button>
+        <button onclick="closeFn('algae')">BACK</button>
+      </div>
+    
+      <!-- Miss Button -->
+      <button onclick="popupFn('miss')">
+        <div class="label">miss</div>
+        <img class="miss" src="miss.png" alt="miss" />
+      </button>
+      <div class="overlay" id="missOverlay"></div>
+      <div class="popupDialog" id="missDialog">
+        <button onclick="closeFn('miss')">reef</button>
+        <button onclick="closeFn('miss')">barge</button>
+        <button onclick="closeFn('miss')">processor</button>
+        <button onclick="closeFn('miss')">BACK</button>
+      </div>
+    
+      <!-- Drop Button -->
+      <button onclick="popupFn('drop')">
+        <div class="label">drop</div>
+        <img class="drop" src="drop.png" alt="drop" />
+      </button>
+      <div class="overlay" id="dropOverlay"></div>
+      <div class="popupDialog" id="dropDialog">
+        <button onclick="closeFn('drop')">confirm</button>
+        <button onclick="closeFn('drop')">cancel</button>
+      </div>
+    </div>
+    
 
     <div class="button-group">
       <button onclick="showPage(3)">Back</button>
       <button onclick="validatePage(4, 5)">Next</button>
     </div>
   </div>
+      
 
-  <!-- PAGE 5: Defense -->
+  <!-- PAGE 5 -->
   <div id="page5" class="page">
     <h2>Fail Points</h2>
     <form id="form5">
@@ -154,9 +202,9 @@
     </div>
   </div>
 
-  <!-- PAGE 6: Summary -->
+  <!-- PAGE 6 -->
   <div id="page6" class="page">
-    <h2>Summary</h2>
+    <h2>Give to lead scout</h2>
     <div id="summaryData"></div>
     <div class="button-group">
       <button onclick="showPage(5)">Back</button>

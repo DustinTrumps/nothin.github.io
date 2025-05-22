@@ -17,43 +17,23 @@ function validatePage(current, next) {
 function updateFieldImage(fromRole = false) {
   const role = document.getElementById('roleSelect')?.value;
   const fieldImg = document.getElementById('fieldImg');
-  const redButtons = document.getElementById('redButtons');
-  const blueButtons = document.getElementById('blueButtons');
-
-  if (!fieldImg) return;
-
-  if (fromRole && role) {
-    currentFieldIndex = role.startsWith('red') ? 0 : 1;
-  }
-
-  fieldImg.src = fieldImages[currentFieldIndex];
-  fieldImg.style.display = 'block';
-
-  // Sync overlay buttons
-  if (currentFieldIndex === 0) {
-    redButtons.style.display = 'flex';
-    blueButtons.style.display = 'none';
-  } else {
-    redButtons.style.display = 'none';
-    blueButtons.style.display = 'flex';
-  }
-
-  // Sync page styling
   const page2 = document.getElementById('page2');
-  if (page2) {
-    if (currentFieldIndex === 0) {
-      page2.classList.add('red-alliance');
-      page2.classList.remove('blue-alliance');
-    } else {
-      page2.classList.add('blue-alliance');
-      page2.classList.remove('red-alliance');
-    }
+
+  if (!fieldImg || !role) return;
+
+  currentFieldIndex = role.startsWith('red') ? 0 : 1;
+  fieldImg.src = fieldImages[currentFieldIndex];
+
+  if (currentFieldIndex === 0) {
+    page2.classList.add('red-alliance');
+    page2.classList.remove('blue-alliance');
+  } else {
+    page2.classList.add('blue-alliance');
+    page2.classList.remove('red-alliance');
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const prevBtn = document.getElementById('prevFieldBtn');
-  const nextBtn = document.getElementById('nextFieldBtn');
   const getRobotBtn = document.getElementById('getRobotBtn');
   const nextBtnPage1 = document.getElementById('nextBtnPage1');
 
@@ -91,4 +71,26 @@ document.addEventListener('DOMContentLoaded', () => {
       showPage(2);
     });
   }
+
+  document.getElementById('roleSelect').addEventListener('change', () => {
+    updateFieldImage(true);
+  });
 });
+
+function Finish() {
+  const matchInput = document.getElementById('matchNumber');
+  let matchNum = parseInt(matchInput.value) || 1;
+  matchInput.value = matchNum + 1;
+
+  showPage(1);
+}
+
+function popupFn(id) {
+  document.getElementById(`${id}Overlay`).style.display = "block";
+  document.getElementById(`${id}Dialog`).style.display = "block";
+}
+
+function closeFn(id) {
+  document.getElementById(`${id}Overlay`).style.display = "none";
+  document.getElementById(`${id}Dialog`).style.display = "none";
+}
