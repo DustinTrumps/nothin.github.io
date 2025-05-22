@@ -12,10 +12,15 @@ body {
   padding: 40px 20px;
   max-width: 500px;
   margin: 0 auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .page.active {
   display: block;
+  opacity: 1;
+  pointer-events: all;
 }
 
 h1, h2 {
@@ -23,13 +28,12 @@ h1, h2 {
 }
 
 .form-section {
-  margin: 15px 0;
+  margin: 15px auto;
   background: #5e8fe7;
   padding: 10px;
   border-radius: 10px;
   text-align: left;
   max-width: 400px;
-  margin: 0 auto;
 }
 
 label {
@@ -47,6 +51,10 @@ input, select, textarea {
   border: none;
   border-radius: 6px;
   box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
 }
 
 button {
@@ -132,7 +140,7 @@ button:hover {
   background-color: #cc4444;
 }
 #redButtons button:active {
-  background-color: #4444cc;
+  background-color: #aa2222;
 }
 
 #blueButtons button {
@@ -142,7 +150,7 @@ button:hover {
   background-color: #4444cc;
 }
 #blueButtons button:active {
-  background-color: #ff0000;
+  background-color: #2222aa;
 }
 
 #page2.red-alliance #redButtons {
@@ -170,6 +178,9 @@ button:hover {
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: center;
 }
 
 .overlay {
@@ -182,29 +193,19 @@ button:hover {
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-.miss{
+
+.miss, .drop, .coral, .algae {
   width: 40%;
   height: auto;
 }
-.drop{
-  width: 40%;
-  height: auto;
-}
-.coral{
-  width: 40%;
-  height: auto; 
-}
-.algae{
-  width: 40%;
-  height: auto;
-}
+
 .teleop-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   padding: 1rem;
   justify-items: center;
-  background-color: #3a72db; /* blue background */
+  background-color: #3a72db;
 }
 
 .teleop-grid button {
@@ -239,4 +240,52 @@ button:hover {
 
 .label {
   margin-bottom: 0.25rem;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 600px) {
+  .page {
+    padding: 20px 10px;
+  }
+
+  .form-section {
+    padding: 8px;
+    max-width: 95%;
+  }
+
+  input, select, textarea {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px 16px;
+    min-width: 80px;
+  }
+
+  .teleop-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .teleop-grid button {
+    width: 100%;
+    height: auto;
+  }
+
+  .teleop-grid img {
+    width: 100px;
+    height: auto;
+  }
+
+  .popupDialog {
+    width: 90%;
+    font-size: 0.9rem;
+    max-width: 320px;
+  }
+
+  .logo {
+    width: 100px;
+    height: auto;
+  }
 }
