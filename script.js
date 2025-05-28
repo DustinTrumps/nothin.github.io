@@ -1,3 +1,67 @@
+/*
+let globalTeamNum = "";
+let globalTeamColor = "";
+let globalMode = "auto";
+
+//placeholders
+const qrTitle = "Scan me!";
+var qrData = "";
+var qrData1 = "";
+var qrData2 = "";
+var startPos, autoPieceData;
+var mobility = "no";
+var teleOpPieceData;
+var qrData4 = "";
+var eventName;
+var scoredL1 = 0;
+var scoredL2 = 0;
+var scoredL3 = 0;
+var scoredL4 = 0;
+var scoredProcessor = 0;
+var scoredNet = 0;
+var missedReef = 0;
+var missedNet = 0;
+var missedProcessor = 0;
+var heldPieceID = "0p";
+
+var globMatchNum = 0;
+
+//for backup
+var lastQrData;
+
+//for handling undo
+var lastAction;
+var lastHeldPiece;
+var lastScoringLocation;
+
+//for calculations
+var autoArr = [];
+var teleArr = [];
+
+//used for timestamp tracking
+var heldPiece = "0p";
+
+[
+  "assignRobot",
+  "dropped1",
+  "droppedAuto",
+  "generateCSV",
+  "logPiece",
+  "logStart",
+  "mobilityToggle",
+  "refreshSchedule",
+  "scoredPiece",
+  "showHistory",
+  "teleOpMissUpdateScore",
+  "undoAuto",
+  "undoTeleOp"
+]
+
+
+*/
+let globalTeamNum = "";
+let globalTeamColor = "";
+
 (() => {
   let currentFieldIndex = 0;
   const fieldImages = ['redField.png', 'blueField.png'];
@@ -9,6 +73,7 @@
       page.classList.add('active');
       if (pageNum === 2) updateFieldImage(true);
       window.scrollTo(0, 0);
+      updateTeamHeader(globalTeamNum, globalTeamColor);
     }
   }
 
@@ -30,21 +95,37 @@
   function updateFieldImage(fromRole = false) {
     const role = document.getElementById('roleSelect')?.value;
     const fieldImg = document.getElementById('fieldImg');
+    const autoFieldImg = document.getElementById('autoFieldImg');
     const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
 
-    if (!fieldImg || !role) return;
+    if (!role) return;
 
     currentFieldIndex = role.startsWith('red') ? 0 : 1;
-    fieldImg.src = fieldImages[currentFieldIndex];
 
-    if (currentFieldIndex === 0) {
-      page2.classList.add('red-alliance');
-      page2.classList.remove('blue-alliance');
-    } else {
-      page2.classList.add('blue-alliance');
-      page2.classList.remove('red-alliance');
-    }
+    if (fieldImg) fieldImg.src = fieldImages[currentFieldIndex];
+    if (autoFieldImg) autoFieldImg.src = fieldImages[currentFieldIndex];
+
+    const allianceClass = currentFieldIndex === 0 ? 'red-alliance' : 'blue-alliance';
+
+    page2?.classList.remove('red-alliance', 'blue-alliance');
+    page3?.classList.remove('red-alliance', 'blue-alliance');
+    page2?.classList.add(allianceClass);
+    page3?.classList.add(allianceClass);
   }
+
+  // === NEW FUNCTION: Update fixed team header bar ===
+function updateTeamHeader(teamNum, teamColorName) {
+  const activePage = document.querySelector('.page.active');
+  if (!activePage) return;
+
+  const teamHeader = activePage.querySelector('.teamHeader');
+  if (!teamHeader) return;
+
+  const teamNumberText = teamHeader.querySelector('.teamNumberText');
+  teamNumberText.textContent = `TEAM: ${teamNum}, ${teamColorName}`;
+}
+
 
   async function getTeam() {
     const eventKey = document.getElementById('eventKey').value;
@@ -78,11 +159,20 @@
         return;
       }
 
-      display.textContent = `Team: ${alliance[index].replace('frc', '')}`;
+      // Set the global team number and color
+      globalTeamNum = alliance[index].replace('frc', '');
+      globalTeamColor = role.startsWith('red') ? 'red' : 'blue';
+
+      display.textContent = `Team: ${globalTeamNum}`;
+
+      // Update the fixed header team display
+      updateTeamHeader(globalTeamNum, globalTeamColor);
+
     } catch (err) {
       display.textContent = `Error: ${err.message}`;
     }
   }
+
 
   function Finish() {
     const matchInput = document.getElementById('matchNumber');
@@ -111,8 +201,41 @@
     document.getElementById('matchNumber').value = saved.matchNumber || 1;
 
     document.getElementById('getRobotBtn')?.addEventListener('click', getTeam);
-    document.getElementById('nextBtnPage1')?.addEventListener('click', () => validatePage(1, 2));
+
+    // NEXT buttons with validation (except last page maybe)
+    const nextButtonsWithValidation = [
+      { btnId: 'nextBtnPage1', from: 1, to: 2 },
+      { btnId: 'nextBtnPage2', from: 2, to: 3 },
+      { btnId: 'nextBtnPage3', from: 3, to: 4 },
+      { btnId: 'nextBtnPage4', from: 4, to: 5 },
+      { btnId: 'nextBtnPage5', from: 5, to: 6 }
+    ];
+    nextButtonsWithValidation.forEach(({ btnId, from, to }) => {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.addEventListener('click', () => validatePage(from, to));
+      }
+    });
+
+    // BACK buttons just show previous page
+    const backButtons = [
+      { btnId: 'backBtnPage2', to: 1 },
+      { btnId: 'backBtnPage3', to: 2 },
+      { btnId: 'backBtnPage4', to: 3 },
+      { btnId: 'backBtnPage5', to: 4 },
+      { btnId: 'backBtnPage6', to: 5 } // If you add this button in future
+    ];
+    backButtons.forEach(({ btnId, to }) => {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.addEventListener('click', () => showPage(to));
+      }
+    });
+
     document.getElementById('roleSelect')?.addEventListener('change', () => updateFieldImage(true));
+
+    // Initialize team header with empty or last known team
+    updateTeamHeader(globalTeamNum || '0000', globalTeamColor || '');
   });
 
   window.addEventListener('beforeunload', () => {

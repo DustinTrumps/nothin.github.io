@@ -55,8 +55,19 @@
   </div>
 
   <!-- PAGE 2 -->
-  <div id="page2" class="page">
-    <h2>Select Start Position</h2>
+<div id="page2" class="page">
+    <!-- Fixed Team Header -->
+<div class="teamHeader">
+  <span class="teamNumberText">TEAM: 0000, COLOR</span>
+</div>
+
+
+  <div class="page-header">
+    <button id="backBtnPage2" class="nav-btn">Back</button>
+    <h2>Start Position</h2>
+    <button id="nextBtnPage2" class="nav-btn">Next</button>
+  </div>
+
     <div class="position-container">
       <img id="fieldImg" class="fieldImage" src="redField.png" alt="Field Image">
       <div id="redButtons">
@@ -74,24 +85,80 @@
         <button>pos 5</button>
       </div>
     </div>
-    <div class="button-group">
-      <button onclick="showPage(1)">Back</button>
-      <button onclick="validatePage(2, 3)">Next</button>
-    </div>
   </div>
 
-  <!-- PAGE 3 -->
-  <div id="page3" class="page">
-    <h2>Auto</h2>
-    <div class="button-group">
-      <button onclick="showPage(2)">Back</button>
-      <button onclick="validatePage(3, 4)">Next</button>
-    </div>
+<!-- PAGE 3 -->
+<div id="page3" class="page blue-alliance">
+    <!-- Fixed Team Header -->
+<div class="teamHeader">
+  <span class="teamNumberText">TEAM: 0000, COLOR</span>
+</div>
+
+
+  <div class="page-header">
+    <button id="backBtnPage3" class="nav-btn">Back</button>
+    <h2>Auto Phase</h2>
+    <button id="nextBtnPage3" class="nav-btn">Next</button>
   </div>
+  <div class="position-container auto-layer-container">
+    <img id="autoFieldImg" class="fieldImage" src="redField.png" alt="Field">
+
+    <!-- Coral buttons (5 total) -->
+    <button class="auto-img-only coral coral1" type="button"><img src="coral.png" alt="Coral 1"></button>
+    <button class="auto-img-only coral coral2" type="button"><img src="coral.png" alt="Coral 2"></button>
+    <button class="auto-img-only coral coral3" type="button"><img src="coral.png" alt="Coral 3"></button>
+    <button class="auto-img-only coral coral4" type="button"><img src="coral.png" alt="Coral 4"></button>
+    <button class="auto-img-only coral coral5" type="button"><img src="coral.png" alt="Coral 5"></button>
+
+    <!-- Algae buttons (3 total) -->
+    <button class="auto-img-only algae algae1" type="button"><img src="algae.png" alt="Algae 1"></button>
+    <button class="auto-img-only algae algae2" type="button"><img src="algae.png" alt="Algae 2"></button>
+    <button class="auto-img-only algae algae3" type="button"><img src="algae.png" alt="Algae 3"></button>
+    <button class="auto-img-only algae algae4" type="button"><img src="algae.png" alt="Algae 4"></button>
+  </div>
+
+<div id="autoButtons">
+    <!-- Action Buttons -->
+    <button id="mobilityButton">
+      <div>Mobility</div>
+    </button>
+    <button id="autoDropButton">
+      <div>Dropped</div>
+    </button>
+    <button id="autoMissButton">
+      <div>Miss</div>
+    </button>
+    <button id="reefButton">
+      <div>Scored in Reef</div>
+    </button>
+    <button id="processorButton">
+      <div>Scored in Processor</div>
+    </button>
+    <button id="netButton">
+      <div>Scored in Net</div>
+    </button>
+  </div>
+</div>
+
 
   <!-- PAGE 4-->
-  <div id="page4" class="page">
+<div id="page4" class="page">
+    <!-- Fixed Team Header -->
+<div class="teamHeader">
+  <span class="teamNumberText">TEAM: 0000, COLOR</span>
+</div>
+
+
+  <div class="page-header">
+    <button id="backBtnPage4" class="nav-btn">Back</button>
     <h2>Teleop Phase</h2>
+    <button id="nextBtnPage4" class="nav-btn">Next</button>
+  </div>
+      <div class="popupDialog" id="dropDialog">
+        <button onclick="closeFn('drop')">confirm</button>
+        <button onclick="closeFn('drop')">cancel</button>
+      </div>
+    
     <div class="teleop-grid">
       <!-- Coral Button -->
       <button onclick="popupFn('coral')">
@@ -138,23 +205,26 @@
         <img class="drop" src="drop.png" alt="drop" />
       </button>
       <div class="overlay" id="dropOverlay"></div>
-      <div class="popupDialog" id="dropDialog">
-        <button onclick="closeFn('drop')">confirm</button>
-        <button onclick="closeFn('drop')">cancel</button>
-      </div>
+      
     </div>
     
-
-    <div class="button-group">
-      <button onclick="showPage(3)">Back</button>
-      <button onclick="validatePage(4, 5)">Next</button>
-    </div>
   </div>
       
 
   <!-- PAGE 5 -->
-  <div id="page5" class="page">
-    <h2>Fail Points</h2>
+<div id="page5" class="page">
+    <!-- Fixed Team Header -->
+<div class="teamHeader">
+  <span class="teamNumberText">TEAM: 0000, COLOR</span>
+</div>
+
+
+  <div class="page-header">
+    <button id="backBtnPage5" class="nav-btn">Back</button>
+    <h2>Misc</h2>
+    <button id="nextBtnPage5" class="nav-btn">Next</button>
+  </div>
+    
     <form id="form5">
       <div class="question">
         <label for="climbStatus">CLIMB</label>
@@ -196,14 +266,17 @@
       </div>
     </form>
 
-    <div class="button-group">
-      <button onclick="showPage(4)">Back</button>
-      <button onclick="validatePage(5, 6)">Next</button>
-    </div>
+    
   </div>
 
   <!-- PAGE 6 -->
   <div id="page6" class="page">
+      <!-- Fixed Team Header -->
+<div class="teamHeader">
+  <span class="teamNumberText">TEAM: 0000, COLOR</span>
+</div>
+
+
     <h2>Give to lead scout</h2>
     <div id="summaryData"></div>
     <div class="button-group">
