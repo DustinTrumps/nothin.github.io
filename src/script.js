@@ -64,7 +64,7 @@ let globalTeamColor = "";
 
 (() => {
   let currentFieldIndex = 0;
-  const fieldImages = ['redField.png', 'blueField.png'];
+  const fieldImages = ['./assets/redField.png', './assets/blueField.png'];
 
   function showPage(pageNum) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
