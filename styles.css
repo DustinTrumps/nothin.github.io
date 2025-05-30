@@ -1,0 +1,410 @@
+/* Base styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #3b6fdc;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Page container */
+.page {
+  display: none;
+  padding: 40px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form styling */
+.form-section {
+  margin: 15px auto;
+  background: #5e8fe7;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  background: #3b3b3b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Buttons */
+button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 8px 4px;
+  min-width: 100px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Navigation and headers */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  flex-grow: 1;
+  text-align: center;
+  user-select: none;
+}
+
+.nav-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  min-width: 80px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+  height: 150px;
+  margin: 10px auto 15px auto;
+  display: block;
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Team display */
+.team-display {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+/* PAGE 2 - Start Position */
+.position-container {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.fieldImage {
+  padding: 6px 8px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+#redButtons, #blueButtons {
+  position: absolute;
+  top: 13%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#redButtons {
+  left: 5%;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+#blueButtons {
+  right: 5%;
+  background: rgba(0, 0, 255, 0.1);
+}
+
+#redButtons button, #blueButtons button {
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#redButtons button {
+  background-color: #ff5555;
+}
+#redButtons button:hover {
+  background-color: #cc4444;
+}
+#redButtons button:active {
+  background-color: #aa2222;
+}
+
+#blueButtons button {
+  background-color: #5555ff;
+}
+#blueButtons button:hover {
+  background-color: #4444cc;
+}
+#blueButtons button:active {
+  background-color: #2222aa;
+}
+
+/* Alliance visibility toggles */
+#page2.red-alliance #redButtons,
+#page3.red-alliance #redButtons {
+  display: flex;
+}
+#page2.red-alliance #blueButtons,
+#page3.red-alliance #blueButtons {
+  display: none;
+}
+#page2.blue-alliance #blueButtons,
+#page3.blue-alliance #blueButtons {
+  display: flex;
+}
+#page2.blue-alliance #redButtons,
+#page3.blue-alliance #redButtons {
+  display: none;
+}
+
+/* PAGE 3 - Auto Phase */
+#page3 .position-container {
+  padding: 1px;
+}
+
+#autoButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+#autoButtons button {
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 140px;
+  min-height: 100px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+#autoButtons button:hover {
+  transform: scale(1.05);
+  background-color: #2c2c2c;
+}
+
+#autoButtons img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Coral & Algae overlays */
+.auto-layer-container {
+  position: relative;
+}
+
+.auto-img-only.coral,
+.auto-img-only.algae {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.auto-img-only.coral img {
+  width: 4%;
+  height: 4%;
+  transition: transform 0.2s ease;
+}
+
+.auto-img-only.algae img {
+  width: 8%;
+  height: 8%;
+  transition: transform 0.2s ease;
+}
+
+.auto-img-only.coral:hover img,
+.auto-img-only.algae:hover img {
+  transform: scale(1.1);
+}
+
+/* Coral positions */
+.coral1 { top: 10px; left: 80px; }
+.coral2 { bottom: 30px; left: 80px; }
+.coral3 { top: 90px; left: 60px; }
+.coral4 { top: 45px; left: 65px; }
+.coral5 { top: 55px; left: 80px; }
+
+/* Algae positions */
+.algae1 { top: 50px; left: 10px; }
+.algae2 { top: 40px; left: 20px; }
+.algae3 { top: 30px; left: 30px; }
+.algae4 { top: 20px; left: 40px; }
+
+/* PAGE 4 - Teleop Phase */
+.teleop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  justify-items: center;
+  background-color: #3a72db;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.teleop-grid button {
+  background-color: #1e1e1e;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100%;
+  min-height: 150px;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.teleop-grid button:hover {
+  transform: scale(1.05);
+}
+
+.teleop-grid img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Popups */
+.popupDialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #202020;
+  border-radius: 12px;
+  color: white;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 0 10px #000;
+  z-index: 1000;
+}
+
+.popupDialog.show {
+  display: block;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 900;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .page-header {
+    max-width: 90%;
+  }
+  button {
+    min-width: 80px;
+    padding: 8px 16px;
+  }
+}
+
+.teamHeader {
+  position: sticky;
+  top: 0;/* or your preferred background */
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  font-family: Arial, sans-serif;
+  font-size: 1.1em;
+  z-index: 100;
+}
+
