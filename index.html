@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Home</title>
+  <title>Mobile Wrapper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
+      overflow: hidden;
     }
     iframe {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       border: none;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <iframe src="src/index.html"></iframe>
+  <iframe src="src/index.html" allowfullscreen></iframe>
 </body>
 </html>
