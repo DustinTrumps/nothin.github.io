@@ -2,32 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Load scr/index.html</title>
+  <title>Home</title>
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 1rem;
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <h1>Main Wrapper Page</h1>
-  <div id="loaded-content">Loading...</div>
-
-  <script>
-    fetch('scr/index.html')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to load scr/index.html');
-        }
-        return response.text();
-      })
-      .then(html => {
-        document.getElementById('loaded-content').innerHTML = html;
-      })
-      .catch(error => {
-        document.getElementById('loaded-content').textContent = error;
-      });
-  </script>
+  <iframe src="src/index.html"></iframe>
 </body>
 </html>
