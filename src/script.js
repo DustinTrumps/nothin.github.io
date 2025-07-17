@@ -92,27 +92,40 @@ let globalTeamColor = "";
     showPage(next);
   }
 
-  function updateFieldImage(fromRole = false) {
-    const role = document.getElementById('roleSelect')?.value;
-    const fieldImg = document.getElementById('fieldImg');
-    const autoFieldImg = document.getElementById('autoFieldImg');
-    const page2 = document.getElementById('page2');
-    const page3 = document.getElementById('page3');
+function updateFieldImage(fromRole = false) {
+  const role = document.getElementById('roleSelect')?.value;
+  const fieldImg = document.getElementById('fieldImg');
+  const autoFieldImg = document.getElementById('autoFieldImg');
+  const page2 = document.getElementById('page2');
+  const page3 = document.getElementById('page3');
 
-    if (!role) return;
+  if (!role) return;
 
-    currentFieldIndex = role.startsWith('red') ? 0 : 1;
+  currentFieldIndex = role.startsWith('red') ? 0 : 1;
 
-    if (fieldImg) fieldImg.src = fieldImages[currentFieldIndex];
-    if (autoFieldImg) autoFieldImg.src = fieldImages[currentFieldIndex];
+  if (fieldImg) fieldImg.src = fieldImages[currentFieldIndex];
+  if (autoFieldImg) autoFieldImg.src = fieldImages[currentFieldIndex];
 
-    const allianceClass = currentFieldIndex === 0 ? 'red-alliance' : 'blue-alliance';
+  const allianceClass = currentFieldIndex === 0 ? 'red-alliance' : 'blue-alliance';
 
-    page2?.classList.remove('red-alliance', 'blue-alliance');
-    page3?.classList.remove('red-alliance', 'blue-alliance');
-    page2?.classList.add(allianceClass);
-    page3?.classList.add(allianceClass);
+  page2?.classList.remove('red-alliance', 'blue-alliance');
+  page3?.classList.remove('red-alliance', 'blue-alliance');
+  page2?.classList.add(allianceClass);
+  page3?.classList.add(allianceClass);
+
+  // NEW: Show/hide auto buttons by alliance
+  const redAutoButtons = page3.querySelector('.auto-buttons-positions-red');
+  const blueAutoButtons = page3.querySelector('.auto-buttons-positions-blue');
+
+  if (allianceClass === 'red-alliance') {
+    redAutoButtons.style.display = 'block';
+    blueAutoButtons.style.display = 'none';
+  } else {
+    redAutoButtons.style.display = 'none';
+    blueAutoButtons.style.display = 'block';
   }
+}
+
 
   // === NEW FUNCTION: Update fixed team header bar ===
 function updateTeamHeader(teamNum, teamColorName) {

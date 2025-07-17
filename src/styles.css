@@ -220,10 +220,71 @@ button:hover {
 }
 
 /* PAGE 3 - Auto Phase */
-#page3 .position-container {
-  padding: 1px;
+/* Shared alliance container styles */
+.auto-buttons-positions-red,
+.auto-buttons-positions-blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
+/* Shared button styles */
+.auto-buttons-positions-red button,
+.auto-buttons-positions-blue button,
+.auto-img-only.coral,
+.auto-img-only.algae {
+  pointer-events: auto;
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Shared image transition */
+.auto-buttons-positions-red button img,
+.auto-buttons-positions-blue button img,
+.auto-img-only.coral img,
+.auto-img-only.algae img {
+  transition: transform 0.2s ease;
+}
+
+.auto-img-only.coral img { width: 8%; height: 8%; }
+.auto-img-only.algae img { width: 10%; height: 10%; }
+
+/* Hover effects */
+.auto-buttons-positions-red button:hover img,
+.auto-buttons-positions-blue button:hover img,
+.auto-img-only.coral:hover img,
+.auto-img-only.algae:hover img {
+  transform: scale(1.1);
+}
+.auto-buttons-positions-red .coral1 { top: 10px; left: 80px; }
+.auto-buttons-positions-red .coral2 { bottom: 30px; left: 80px; }
+.auto-buttons-positions-red .coral3 { top: 90px; left: 60px; }
+.auto-buttons-positions-red .coral4 { top: 45px; left: 65px; }
+.auto-buttons-positions-red .coral5 { top: 55px; left: 80px; }
+
+.auto-buttons-positions-red .algae1 { top: 50px; left: 10px; }
+.auto-buttons-positions-red .algae2 { top: 40px; left: 20px; }
+.auto-buttons-positions-red .algae3 { top: 30px; left: 30px; }
+.auto-buttons-positions-red .algae4 { top: 20px; left: 40px; }
+
+/* Example: Blue alliance button positions - different from red */
+.auto-buttons-positions-blue .coral1 { top: 15px; left: 60px; }
+.auto-buttons-positions-blue .coral2 { bottom: 40px; left: 60px; }
+.auto-buttons-positions-blue .coral3 { top: 85px; left: 40px; }
+.auto-buttons-positions-blue .coral4 { top: 50px; left: 45px; }
+.auto-buttons-positions-blue .coral5 { top: 60px; left: 70px; }
+
+.auto-buttons-positions-blue .algae1 { top: 55px; left: 20px; }
+.auto-buttons-positions-blue .algae2 { top: 45px; left: 30px; }
+.auto-buttons-positions-blue .algae3 { top: 35px; left: 40px; }
+.auto-buttons-positions-blue .algae4 { top: 25px; left: 50px; }
 #autoButtons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -264,52 +325,6 @@ button:hover {
   height: 50px;
   object-fit: contain;
 }
-
-/* Coral & Algae overlays */
-.auto-layer-container {
-  position: relative;
-}
-
-.auto-img-only.coral,
-.auto-img-only.algae {
-  position: absolute;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.auto-img-only.coral img {
-  width: 4%;
-  height: 4%;
-  transition: transform 0.2s ease;
-}
-
-.auto-img-only.algae img {
-  width: 8%;
-  height: 8%;
-  transition: transform 0.2s ease;
-}
-
-.auto-img-only.coral:hover img,
-.auto-img-only.algae:hover img {
-  transform: scale(1.1);
-}
-
-/* Coral positions */
-.coral1 { top: 10px; left: 80px; }
-.coral2 { bottom: 30px; left: 80px; }
-.coral3 { top: 90px; left: 60px; }
-.coral4 { top: 45px; left: 65px; }
-.coral5 { top: 55px; left: 80px; }
-
-/* Algae positions */
-.algae1 { top: 50px; left: 10px; }
-.algae2 { top: 40px; left: 20px; }
-.algae3 { top: 30px; left: 30px; }
-.algae4 { top: 20px; left: 40px; }
-
 /* PAGE 4 - Teleop Phase */
 .teleop-grid {
   display: grid;
